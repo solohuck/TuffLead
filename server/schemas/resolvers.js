@@ -4,7 +4,6 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: { 
-    categories: async () => Category.find(),
     subscriptions: async (parent, { name }) => {
       const params = {};
 
@@ -13,13 +12,17 @@ const resolvers = {
           $regex: name,
         };
       }
-    },
 
+      return Subscription.find(params)
+    },
+    subscription: async (parent, { id }) => 
+      Subscription.findById(id),
+  
     user: async (parent, args, context) => {
       if(context.user) {
         const user = await User.findById(context.user.id).populate({
           path: 'orders.subscriptions',
-          populate: 'category',
+        
         });
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
@@ -77,7 +80,7 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);

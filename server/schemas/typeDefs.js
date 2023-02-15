@@ -3,9 +3,9 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    username: String
+    userName: String
     email: String
-    password: String
+    orders: [Order]
   }
 
 
@@ -19,7 +19,7 @@ type Subscription {
   
 
   type Auth {
-    token: ID!
+    token: ID
     user: User
   }
 
@@ -27,12 +27,14 @@ type Subscription {
 
   type Query {
     subscriptions(name:String): [Subscription]
-    subscription(_id: ID!): Order
-    suuer
+    subscription(_id: ID!): Subscription
+    user: User
+    order(_id: ID!): Order
   }
 
   type Order {
     _id: ID 
+    purchaseDate: String
     subscriptions: [Subscription]
   }
 
