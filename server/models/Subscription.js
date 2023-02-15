@@ -24,7 +24,10 @@ const productSchema = new Schema({
     min: 0,
     default: 0
   },
-
+  purchaseDate: {
+    type: Date,
+    default: Date.now
+  },
 });
 
 const Subscription = mongoose.model('Subscription', subscriptionSchema);
