@@ -7,7 +7,6 @@ export const QUERY_SUBSCRIPTIONS = gql`
       name
       description
       price
-      quantity
       image
     }
   }
@@ -28,7 +27,6 @@ export const QUERY_ALL_SUBSCRIPTIONS = gql`
       name
       description
       price
-      quantity
     }
   }
 `;
@@ -37,16 +35,13 @@ export const QUERY_USER = gql`
   {
     user {
       username
-      orders {
+      subscriptions {
         _id
         purchaseDate
-        subscriptions {
-          _id
-          name
-          description
-          price
-          quantity
-          image
+        name
+        description
+        price
+        image
         }
       }
     }
