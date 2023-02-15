@@ -31,15 +31,28 @@ export const LOGIN = gql`
 `;
 
 export const ADD_SUBSCRIPTION = gql`
-  mutation addOrder($subscriptions: [ID]!) {
-    addOrder(subscriptions: $subscriptions) {
+  mutation addSubscription($subscriptions: [ID]!) {
+    addSubscription(subscriptions: $subscriptions) {
       purchaseDate
       subscriptions {
         _id
         name
         description
         price
-        quantity
+      }
+    }
+  }
+`;
+
+export const CANCEL_SUBSCRIPTION = gql`
+  mutation cancelSubscription($subscriptions: [ID]!) {
+    cancelSubscription(subscriptions: $subscriptions) {
+      purchaseDate
+      subscriptions {
+        _id
+        name
+        description
+        price
       }
     }
   }
