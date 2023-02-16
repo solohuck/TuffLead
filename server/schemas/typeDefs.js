@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    userName: String
+    username: String
     email: String
     orders: [Order]
   }
@@ -40,13 +40,13 @@ type Subscription {
 
   type Mutation {
     addUser(
-      userName: String! 
+      username: String! 
       email: String!
       password: String!
       ): Auth
       addOrder(subscriptions: [ID]!): Order
       updateUser(
-        userName: String
+        username: String
         email: String
         password: String
       ): User
