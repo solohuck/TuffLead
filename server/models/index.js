@@ -1,4 +1,5 @@
 const User = require('./User');
-const Thought = require('./Subscription');
+const Subscription = require('./Subscription');
+const Order = require('./Order');
 
-module.exports = { User, Thought };
+module.exports = { User, Subscription, Order };

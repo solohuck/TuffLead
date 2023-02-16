@@ -1,8 +1,11 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose')
+
+const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+const Order = require('./Order');
 
 const userSchema = new Schema({
-  username: {
+  userName: {
     type: String,
     required: true,
     unique: true,
@@ -19,12 +22,8 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  subscriptions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Subscription',
-    },
-  ],
+ orders: [Order.schema]
+
 });
 
 userSchema.pre('save', async function (next) {
@@ -37,9 +36,9 @@ userSchema.pre('save', async function (next) {
 });
 
 userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+  return await bcrypt.compare(password, this.password);
 };
 
-const User = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
