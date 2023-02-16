@@ -30,9 +30,9 @@ export const LOGIN = gql`
   }
 `;
 
-export const ADD_SUBSCRIPTION = gql`
-  mutation addSubscription($subscriptions: [ID]!) {
-    addSubscription(subscriptions: $subscriptions) {
+export const ADD_ORDER = gql`
+  mutation addOrder($subscriptions: [ID]!) {
+    addOrder(subscriptions: $subscriptions) {
       purchaseDate
       subscriptions {
         _id
