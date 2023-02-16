@@ -1,78 +1,98 @@
-import React from "react";
-import { Button, Checkbox, Form, Input } from 'antd';
+import React, { useState } from "react";
+import { Button, Checkbox, Form, Input } from "antd";
+import { useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
+import { LOGIN } from "../utils/mutations";
+import Auth from "../utils/auth";
+import "../Login.css";
 
-const onFinish = (values) => {
-  console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log('Failed:', errorInfo);
-};
-const Login = () => (
-  <Form
-    name="basic"
-    labelCol={{
-      span: 8,
-    }}
-    wrapperCol={{
-      span: 16,
-    }}
-    style={{
-      maxWidth: 600,
-    }}
-    initialValues={{
-      remember: true,
-    }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off"
-  >
-    <Form.Item
-      label="Username"
-      name="username"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your username!',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+function Login(props) {
+  const [form] = Form.useForm();
+  const [error, setError] = useState(null);
+  const [loginUser] = useMutation(LOGIN);
 
-    <Form.Item
-      label="Password"
-      name="password"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your password!',
-        },
-      ]}
-    >
-      <Input.Password />
-    </Form.Item>
+  const onFinish = async (values) => {
+    try {
+      const { data } = await loginUser({
+        variables: values,
+      });
+      const token = data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.error(e);
+      setError("The provided credentials are incorrect");
+    }
+  };
 
-    <Form.Item
-      name="remember"
-      valuePropName="checked"
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-      <Checkbox>Remember me</Checkbox>
-    </Form.Item>
+  const onFinishFailed = ({ errorFields }) => {
+    form.scrollToField(errorFields[0].name);
+  };
 
-    <Form.Item
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
-    </Form.Item>
-  </Form>
-);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    form.setFieldsValue({ [name]: value });
+  };
+
+  return (
+    <div className="login-container">
+      <Form
+        name="login"
+        form={form}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
+        <Form.Item
+          label="Email address"
+          name="email"
+          rules={[
+            {
+              type: "email",
+              required: true,
+              message: "Please enter a valid email address",
+            },
+          ]}
+        >
+          <Input
+            placeholder="youremail@test.com"
+            name="email"
+            type="email"
+            onChange={handleInputChange}
+          />
+        </Form.Item>
+
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: "Please enter your password",
+            },
+          ]}
+        >
+          <Input.Password
+            placeholder="******"
+            name="password"
+            type="password"
+            onChange={handleInputChange}
+          />
+        </Form.Item>
+
+        {error && (
+          <div>
+            <p className="error-text">{error}</p>
+          </div>
+        )}
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
+  );
+}
+
 export default Login;

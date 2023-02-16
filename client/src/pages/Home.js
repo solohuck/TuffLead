@@ -1,16 +1,18 @@
-import React from "react";
-import Head from '../components/Header';
-import Foot from '../components/Footer';
-import SubscriptionMenu from "../components/SubscriptionsMenu";
+import React from 'react';
+import { Layout } from 'antd';
 
-const Home = () => {
+
+
+const { Content, Footer } = Layout;
+
+function Home() {
   return (
-    <div>
-      <Head />
-      <SubscriptionMenu />
-      <Foot />
-    </div>
+    <Layout className="layout">
+      
+    </Layout>
   );
-};
+}
 
 export default Home;
+
+

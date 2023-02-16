@@ -1,5 +1,6 @@
 import React from "react";
 import { Layout, Space } from 'antd';
+import '/styles.css';
 const { Content } = Layout;
 
 const contentStyle = {

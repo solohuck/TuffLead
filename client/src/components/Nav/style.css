@@ -1,0 +1,45 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin: 30px;
+  font-size: 30px;
+}
+
+a {
+  color: var(--tertiary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.logo {
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  float: left;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 64px;
+  color: #fff;
+}
+
+.nav-menu {
+  float: right;
+}
+
+.cart-icon {
+  float: right;
+  margin-top: 16px;
+}
+
+
+.big {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
