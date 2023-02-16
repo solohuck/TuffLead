@@ -1,16 +1,17 @@
 import React from "react";
 import { Layout, Space } from 'antd';
-const { Footer } = Layout;
+import '/styles.css';
+const { Content } = Layout;
 
-
-const footerStyle = {
+const contentStyle = {
   textAlign: 'center',
+  minHeight: 120,
+  lineHeight: '120px',
   color: '#fff',
-  backgroundColor: '#7dbcea',
-  padding: '100px',
+  backgroundColor: '#108ee9',
 };
 
-function Foot() {
+function SubscriptionMenu() {
   return (
   <>
     <Space
@@ -21,11 +22,11 @@ function Foot() {
     size={[0, 60]}
   >
     <Layout>
-      <Footer style={footerStyle}>Ant Design ©2023 Created by Ant UED</Footer>
+      <Content style={contentStyle}></Content>
     </Layout>
   </Space>
 
 </>
 )}
 
-export default Foot;
+export default SubscriptionMenu;
