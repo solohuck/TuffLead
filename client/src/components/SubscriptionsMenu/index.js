@@ -1,19 +1,16 @@
 import React from "react";
 import { Layout, Space } from 'antd';
-const { Header } = Layout;
+const { Content } = Layout;
 
-const headerStyle = {
+const contentStyle = {
   textAlign: 'center',
+  minHeight: 120,
+  lineHeight: '120px',
   color: '#fff',
-  height: 64,
-  paddingInline: 50,
-  lineHeight: '64px',
-  backgroundColor: '#7dbcea',
-  fontSize: 50,
+  backgroundColor: '#108ee9',
 };
 
-
-function Head() {
+function SubscriptionMenu() {
   return (
   <>
     <Space
@@ -24,11 +21,11 @@ function Head() {
     size={[0, 60]}
   >
     <Layout>
-      <Header style={headerStyle}>Tuff Lead</Header>
+      <Content style={contentStyle}></Content>
     </Layout>
   </Space>
 
 </>
 )}
 
-export default Head;
+export default SubscriptionMenu;
