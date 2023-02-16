@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const productSchema = new Schema({
+const subscriptionSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -18,16 +18,9 @@ const productSchema = new Schema({
     type: Number,
     required: true,
     min: 0.99
-  },
-  quantity: {
-    type: Number,
-    min: 0,
-    default: 0
-  },
-  purchaseDate: {
-    type: Date,
-    default: Date.now
-  },
+  }
+  
+  
 });
 
 const Subscription = mongoose.model('Subscription', subscriptionSchema);
