@@ -7,16 +7,20 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { Layout } from 'antd';
 
 import Home from './pages/Home';
 import Nav from './components/Nav';
 import Login from './pages/Login';
-import Subscriptions from './pages/Subscriptions';
+import SubscriptionsMenu from './components/SubscriptionsMenu';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+import Foot from './components/Footer';
+import Subscriptions from './pages/Subscriptions';
 
 
 
+const { Content } = Layout;
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
 });
@@ -35,13 +39,21 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+const contentStyle = {
+  height: '100%',
+}
+
+const layoutStyle = {
+  height: '100vh',
+}
 
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+      <Layout style={layoutStyle}>
           <Nav />
+          <Content style={contentStyle}>
           <Routes>
             <Route 
               path="/" 
@@ -56,6 +68,10 @@ function App() {
               element={<Signup />} 
             />
             <Route 
+              path="/SubscriptionsMenu" 
+              element={<SubscriptionsMenu />} 
+            />
+              <Route 
               path="/Subscriptions" 
               element={<Subscriptions />} 
             />
@@ -64,7 +80,9 @@ function App() {
               element={<Profile />} 
             />
           </Routes>
-        </div>
+          </Content>
+          <Foot/>
+        </Layout>
       </Router>
     </ApolloProvider>
   );

@@ -3,21 +3,26 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import './style.css';
+import "./style.css";
 
 function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["1"]}
+          className="big"
+        >
+           <h1 className="title">
+            <Link to="/">Tuff Lead</Link>
+          </h1>
           <Menu.Item key="1">
-            <Link to="/orderHistory">Order History</Link>
+            <Link to="/profile">Profile</Link>
           </Menu.Item>
           <Menu.Item key="2">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
+            <Link to="/subscriptions">Subscriptions</Link>
           </Menu.Item>
           <Menu.Item key="3" style={{ float: "right" }}>
             <ShoppingCartOutlined />
@@ -26,7 +31,12 @@ function Nav() {
       );
     } else {
       return (
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]} className="big">
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["1"]}
+          className="big"
+        >
           <h1 className="title">
             <Link to="/">Tuff Lead</Link>
           </h1>
@@ -36,9 +46,6 @@ function Nav() {
           <Menu.Item key="2">
             <Link to="/login">Login</Link>
           </Menu.Item>
-          <Menu.Item key="3" style={{ float: "right" }} className="cart">
-            <ShoppingCartOutlined />
-          </Menu.Item>
         </Menu>
       );
     }
@@ -46,9 +53,7 @@ function Nav() {
 
   return (
     <header>
-      <nav>
-        {showNavigation()}
-      </nav>
+      <nav>{showNavigation()}</nav>
     </header>
   );
 }
