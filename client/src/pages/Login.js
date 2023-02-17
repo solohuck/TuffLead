@@ -85,7 +85,7 @@ function Login(props) {
           </div>
         )}
 
-        <Form.Item>
+        <Form.Item className="sub-but">
           <Button type="primary" htmlType="submit">
             Submit
           </Button>

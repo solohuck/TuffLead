@@ -1,31 +1,20 @@
-.login-container {
+.signup-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 60vh;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
 }
 
-.login-container form {
-  max-width: 600px;
-  width: 100%;
-  padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.login-container form .ant-form-item-label {
-  font-weight: bold;
-}
-
-.login-container form .ant-form-item-explain {
+.signup-error-text {
   color: red;
+  margin-bottom: 1rem;
 }
 
-.login-container form .ant-form-item-control-input {
-  border-radius: 4px;
-}
-
-.login-container form .ant-btn {
-  width: 100%;
-  border-radius: 4px;
+.create-but {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -3,13 +3,12 @@ import { Layout } from 'antd';
 
 
 
-const { Content, Footer } = Layout;
+const { Footer } = Layout;
 
 function Home() {
   return (
-    <Layout className="layout">
-      
-    </Layout>
+      <Footer />
+  
   );
 }
 

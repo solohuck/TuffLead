@@ -6,78 +6,84 @@ import Auth from '../utils/auth';
 import '../Signup.css'
 
 const Signup = () => {
-  const [formState, setFormState] = useState({ username: '', email: '', password: '' });
-  const [addUser, { error }] = useMutation(ADD_USER);
+  const [form] = Form.useForm();
+  const [error, setError] = useState(null);
+  const [addUser] = useMutation(ADD_USER);
 
-  const handleFormSubmit = async (values) => {
+  const onFinish = async (values) => {
     try {
-      const mutationResponse = await addUser({
+      const { data } = await addUser({
         variables: {
+          username: values.username,
           email: values.email,
           password: values.password,
-          firstName: values.firstName,
-          lastName: values.lastName,
         },
       });
-      const token = mutationResponse.data.addUser.token;
+      const token = data.addUser.token;
       Auth.login(token);
     } catch (e) {
       console.log(e);
+      setError("Unable to create an account with provided credentials.");
     }
   };
-  
-  const handleChange = (event) => {
+
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+    form.setFieldsValue({ [name]: value });
   };
 
   return (
-    <Form
-      name="basic"
-      initialValues={{ remember: true }}
-      onFinish={handleFormSubmit}
-    >
-      <Form.Item
-        label="username"
-        name="username"
-        rules={[{ required: true, message: 'Please input your username!' }]}
+    <div className="signup-container">
+      <Form
+        form={form}
+        name="signup"
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={({ errorFields }) => {
+          form.scrollToField(errorFields[0].name);
+        }}
       >
-        <Input name="username" onChange={handleChange} />
-      </Form.Item>
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[{ required: true, message: 'Please input your username!' }]}
+        >
+          <Input name="username" onChange={handleInputChange} />
+        </Form.Item>
 
-      <Form.Item
-        label="email"
-        name="email"
-        rules={[
-          {
-            type: 'email',
-            required: true,
-            message: 'Please enter a valid email address',
-          },
-        ]}
-      >
-        <Input name="email" type="email" onChange={handleChange} />
-      </Form.Item>
+        <Form.Item
+          label="Email address"
+          name="email"
+          rules={[
+            {
+              type: 'email',
+              required: true,
+              message: 'Please enter a valid email address',
+            },
+          ]}
+        >
+          <Input name="email" type="email" onChange={handleInputChange} />
+        </Form.Item>
 
-      <Form.Item
-        label="password"
-        name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password name="password" onChange={handleChange} />
-      </Form.Item>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+        >
+          <Input.Password name="password" onChange={handleInputChange} />
+        </Form.Item>
 
-      {error && <div>Sign up failed</div>}
+        {error && (
+          <div className="signup-error-text">{error}</div>
+        )}
 
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item className='create-but'>
+          <Button type="primary" htmlType="submit">
+            Create Account
+          </Button>
+        </Form.Item>
+      </Form>
+    </div>
   );
 };
 
