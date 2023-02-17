@@ -51,6 +51,7 @@ type Subscription {
         password: String
       ): User
       updateSubscription(_id: ID!): Subscription
+      cancelSubscription(_id: ID!): Subscription
     login(email: String!, password: String!): Auth
   }
 `;

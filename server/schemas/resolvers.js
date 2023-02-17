@@ -93,6 +93,17 @@ const resolvers = {
 
       return { token, user };
     },
+    cancelSubscription: async (parent, { subscriptionId }, context ) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user_id },
+          { $pull: { savedBooks: { subscriptionId } } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+    },
   },
 };
 
