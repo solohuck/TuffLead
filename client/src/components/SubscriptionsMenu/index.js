@@ -15,22 +15,22 @@ const carouselStyle = {
 };
 
 
-const SubscriptionMenu = () => {
+const SubscriptionsMenu = () => {
   const subscriptions = [
     {
-      name: 'Basic',
+      name: '1',
       price: '$9.99/month',
-      features: ['Access to selected courses', 'Limited content', 'No personalized recommendations'],
+      features: [],
     },
     {
-      name: 'Gold',
-      price: '$19.99/month',
-      features: ['Unlimited access to all courses', 'Exclusive content', 'Personalized recommendations'],
+      name: '2',
+      price: '$9.99/month',
+      features: [],
     },
     {
-      name: 'Platinum',
-      price: '$29.99/month',
-      features: ['Unlimited access to all courses', 'Exclusive content', 'Personalized recommendations', 'Priority support'],
+      name: '3',
+      price: '$9.99/month',
+      features: [],
     },
   ];
 
@@ -59,4 +59,4 @@ const SubscriptionMenu = () => {
   );
 };
 
-export default SubscriptionMenu;
+export default SubscriptionsMenu;
