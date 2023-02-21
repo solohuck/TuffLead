@@ -25,6 +25,6 @@ As developers of this food-flavored pencil subscription app, our goal is to crea
 
   ## Developers
   To peruse more of of our portfolios, check these out: <br>
-  [solohuck] (https://github.com/solohuck) <br>
-  [metoama] (https://github.com/metoama) <br>
+  [solohuck](https://github.com/solohuck) <br>
+  [metoama](https://github.com/metoama) <br>
   [blakerichardburns](https://github.com/blakerichardburns)
