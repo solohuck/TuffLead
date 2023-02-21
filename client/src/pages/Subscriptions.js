@@ -39,6 +39,8 @@ const subscriptionCardStyle = {
   borderRadius: '0.5rem',
   boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
   height: '100%',
+  padding: '50px',
+  margin: '70px',
 };
 
 const SubscriptionPage = () => {

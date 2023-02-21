@@ -63,21 +63,21 @@ function App() {
               path="/login" 
               element={<Login />} 
             />
+              <Route 
+                path="/profile" 
+                element={<Profile />} 
+              />
             <Route 
               path="/signup" 
               element={<Signup />} 
             />
             <Route 
-              path="/SubscriptionsMenu" 
+              path="/subscriptionsMenu" 
               element={<SubscriptionsMenu />} 
             />
               <Route 
-              path="/Subscriptions" 
+              path="/subscriptions" 
               element={<Subscriptions />} 
-            />
-            <Route 
-              path="/Profile" 
-              element={<Profile />} 
             />
           </Routes>
           </Content>

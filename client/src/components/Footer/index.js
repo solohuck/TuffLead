@@ -4,10 +4,8 @@ const { Footer } = Layout;
 
 const footerStyle = {
   textAlign: 'center',
-  color: '#fff',
-  backgroundColor: '#7dbcea',
-  padding: '100px',
-  height: '100px',
+  color: 'black',
+  padding: '50px',
 };
 
 function Foot() {
