@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import { useMutation } from "@apollo/client";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 import "../Login.css";
@@ -10,6 +10,7 @@ function Login(props) {
   const [form] = Form.useForm();
   const [error, setError] = useState(null);
   const [loginUser] = useMutation(LOGIN);
+  const navigate = useNavigate(); 
 
   const onFinish = async (values) => {
     try {
@@ -18,6 +19,8 @@ function Login(props) {
       });
       const token = data.login.token;
       Auth.login(token);
+      console.log(navigate)
+      navigate("/profile");
     } catch (e) {
       console.error(e);
       setError("The provided credentials are incorrect");
