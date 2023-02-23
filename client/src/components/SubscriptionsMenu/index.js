@@ -1,62 +1,43 @@
-
 import React from 'react';
-import { Layout, Typography, Carousel } from 'antd';
+import { Layout, Typography, Carousel, Rate, Avatar, Card, Row, Col  } from 'antd';
 
 const { Content } = Layout;
 const { Title } = Typography;
+const { Meta } = Card;
 
-const carouselStyle = {
-  width: '60%',
-  margin: '0 auto',
-  height: '300px',
-  background: '#f5f5f5',
-  borderRadius: '0.5rem',
-  padding: '2rem',
-};
+const customerReviews = [ 
 
+  {
+    name: '@PencilLover123',
+    avatar: [<Avatar src="https://joesch.moe/api/v1/random" />],
+    description: [
+    <Rate disabled defaultValue={5} /> , 
+    "I absolutely love this subscription service! The flavors are amazing and the pencils write so smoothly. I can't wait for my next delivery!"
+    ],
+  }
 
-const SubscriptionsMenu = () => {
-  const subscriptions = [
-    {
-      name: '1',
-      price: '$9.99/month',
-      features: [],
-    },
-    {
-      name: '2',
-      price: '$9.99/month',
-      features: [],
-    },
-    {
-      name: '3',
-      price: '$9.99/month',
-      features: [],
-    },
-  ];
+];
 
-  return (
+const Ratings = () => (
     <Layout>
-      <Content>
-        <div style={carouselStyle}>
-          <Title level={2}>Choose Your Subscription</Title>
-          <Carousel dots={true} effect="fade" autoplay>
-            {subscriptions.map((subscription, index) => (
-              <div key={index}>
-                <Title level={3}>{subscription.name} Subscription</Title>
-                <p>Price: {subscription.price}</p>
-                <p>Features:</p>
-                <ul>
-                  {subscription.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </Carousel>
-        </div>
+      <Content style={{ padding: '2rem' }}>
+        <Title level={1} style={{ textAlign: 'center', padding: '20px', height: '20vh'}}>
+        </Title>
+        <Row className='flex'>
+          <Carousel> 
+          {customerReviews.map((item) => (
+            <Card style={{ width: 300, marginTop: 16 }}>
+              <Meta
+                avatar={item.avatar}
+                title={item.name}
+                description={item.description}
+              />
+            </Card>
+          ))}
+          </Carousel> 
+        </Row>
       </Content>
     </Layout>
-  );
-};
+);
 
-export default SubscriptionsMenu;
+export default Ratings;

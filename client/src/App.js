@@ -17,6 +17,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Foot from './components/Footer';
 import Subscriptions from './pages/Subscriptions';
+import Cart from './pages/Cart'
 
 
 
@@ -78,6 +79,10 @@ function App() {
               <Route 
               path="/subscriptions" 
               element={<Subscriptions />} 
+            />
+               <Route 
+              path="/cart" 
+              element={<Cart />} 
             />
           </Routes>
           </Content>
