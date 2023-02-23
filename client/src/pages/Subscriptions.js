@@ -1,6 +1,6 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react'; //{ useState, useEffect} 
 import { Col, Layout, Row, Typography, Carousel, } from 'antd';
-import { ShoppingCartOutlined, HeartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 import { Card } from 'antd';
 import { Image } from 'antd';
 import '../Subscription.css';
@@ -34,6 +34,51 @@ import spicy1 from '../images/Spicy1.png';
 import spicy2 from '../images/Spicy2.png';
 import spicy3 from '../images/Spicy3.png';
 import spicy4 from '../images/Spicy4.png';
+
+
+//Button 
+import { Button, message } from 'antd';
+const SubscribeButton = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = 'updatable';
+  const openMessage = () => {
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Purchasing...',
+    });
+    setTimeout(() => {
+      messageApi.open({
+        key,
+        type: 'success',
+        content: 'Subscribed!',
+        duration: 2,
+      });
+    }, 1000);
+  };
+return (
+  <>
+    {contextHolder}
+    <Button type="primary" icon={<ShoppingCartOutlined />} onClick={openMessage}>
+      Add to Cart
+    </Button>
+  </>
+);
+};
+// export const App = () => (
+//   <Button type="primary" onClick={info}>
+//     Display normal message
+//   </Button>
+// );
+
+
+
+
+
+
+
+
+
 
 
 
@@ -127,8 +172,8 @@ const SubscriptionPage = () => {
             style={{ width: 300 }}
             cover= {item.image}
             actions={[
-          <HeartOutlined key='save'/>,
-          <ShoppingCartOutlined key='cart'/>,
+          //<HeartOutlined key='save'/>,
+         <SubscribeButton />
           ]}
         >
 
