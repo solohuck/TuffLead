@@ -28,3 +28,8 @@ As developers of this food-flavored pencil subscription app, our goal is to crea
   [solohuck](https://github.com/solohuck) <br>
   [metoama](https://github.com/metoama) <br>
   [blakerichardburns](https://github.com/blakerichardburns)
+
+  ## Contact
+  metoama@gmail.com
+  solohuckstep@gmail.com
+  blakerichardburns@gmail.com
