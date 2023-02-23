@@ -1,7 +1,7 @@
 # Tuff Lead
 Project 3: Interactive MERN Stack Single-Page Application
 
-![Alt text](./client/src/assets/screenshot.JPEG "Screenshot")
+![Alt text](./client/src/assets/screenshot.JPG "Screenshot")
 
 ## Live Link
 https://tuff-lead.herokuapp.com/
