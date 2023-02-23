@@ -116,7 +116,7 @@ const SubscriptionPage = () => {
   return (
     <Layout>
       <Content style={{ padding: '2rem' }}>
-        <Title level={1} style={{ textAlign: 'center', padding: '20px'}}>
+        <Title level={1} style={{ textAlign: 'center', padding: '100px'}}>
           Subscription Options
         </Title>
         <Row>

@@ -43,3 +43,19 @@ a:hover {
   align-items: center;
   text-decoration: none;
 }
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.pencil {
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.pencil:hover {
+  opacity: 0.7;
+}
