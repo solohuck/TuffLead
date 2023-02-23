@@ -156,33 +156,6 @@ export const subscriptionData = [
   },
 ];
 
-const [savedSubs, setSavedSubs] = useState([]);
-
-const handleSaveSubscription = async (subscriptionId) => {
-  const subtoSave = savedSubs.find((book) => book.bookId === subscriptionId);
-
-  const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-  if (!token) {
-    return false;
-  }
-
-  try {
-    await saveBook({
-      variables: {
-        bookData: {
-          ...subtoSave,
-        },
-      },
-    });
-
-    setSavedBookIds([...savedBookIds, subtoSave.bookId]);
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-
 const SubscriptionPage = () => {
 
   return (
