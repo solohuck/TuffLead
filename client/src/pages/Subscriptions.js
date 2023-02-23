@@ -97,7 +97,7 @@ const images_5 = [savory1, savory2, savory3, savory4];
 
 
 
-const subscriptionData = [
+export const subscriptionData = [
 
   {
     name: 'The Herb & Spice Set',
