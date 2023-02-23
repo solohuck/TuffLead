@@ -30,6 +30,6 @@ As developers of this food-flavored pencil subscription app, our goal is to crea
   [blakerichardburns](https://github.com/blakerichardburns)
 
   ## Contact
-  metoama@gmail.com
-  solohuckstep@gmail.com
-  blakerichardburns@gmail.com
+  metoama@gmail.com <br>
+  solohuckstep@gmail.com <br>
+  blakerichardburns@gmail.com <br>
