@@ -2,10 +2,15 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import Logo from '../../images/pencil-logo.ico';
+
 import "./style.css";
 
 function Nav() {
+  function handleLogout() {
+    Auth.logout();
+  }
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
@@ -24,8 +29,11 @@ function Nav() {
           <Menu.Item key="2">
             <Link to="/subscriptions">Subscriptions</Link>
           </Menu.Item>
-          <Menu.Item key="3" style={{ float: "right" }}>
-            <Link to="/cart"><ShoppingCartOutlined /></Link>
+          <Menu.Item key="4" style={{ float: "right" }}>
+            <Link to="/ratings">Reviews</Link>
+          </Menu.Item>
+          <Menu.Item key="3" style={{ float: "right", marginLeft: "auto" }}>
+              <img src={Logo} alt="Logo" onClick={handleLogout} className='pencil'/>
           </Menu.Item>
         </Menu>
       );
