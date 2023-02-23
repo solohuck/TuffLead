@@ -25,7 +25,7 @@ function Nav() {
             <Link to="/subscriptions">Subscriptions</Link>
           </Menu.Item>
           <Menu.Item key="3" style={{ float: "right" }}>
-            <ShoppingCartOutlined />
+            <Link to="/cart"><ShoppingCartOutlined /></Link>
           </Menu.Item>
         </Menu>
       );
