@@ -12,13 +12,11 @@ import { Layout } from 'antd';
 import Home from './pages/Home';
 import Nav from './components/Nav';
 import Login from './pages/Login';
-import SubscriptionsMenu from './components/SubscriptionsMenu';
+import Ratings from './components/Ratings';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Foot from './components/Footer';
 import Subscriptions from './pages/Subscriptions';
-import Cart from './pages/Cart'
-
 
 
 const { Content } = Layout;
@@ -73,17 +71,14 @@ function App() {
               element={<Signup />} 
             />
             <Route 
-              path="/subscriptionsMenu" 
-              element={<SubscriptionsMenu />} 
+              path="/ratings" 
+              element={<Ratings />} 
             />
               <Route 
               path="/subscriptions" 
               element={<Subscriptions />} 
             />
-               <Route 
-              path="/cart" 
-              element={<Cart />} 
-            />
+         
           </Routes>
           </Content>
           <Foot/>
